@@ -1,4 +1,4 @@
-# coffee_shop
+# weather_app
 
 A new Flutter project.
 
