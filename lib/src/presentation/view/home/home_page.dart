@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.primaryColor,
           title: BlocBuilder<WeatherBloc, WeatherState>(
             builder: (context, state) {
               final hour = DateTime.now().hour;

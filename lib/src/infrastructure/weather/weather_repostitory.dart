@@ -49,7 +49,7 @@ class WeatherRepository implements IWeatherRepository {
     required String longitude,
   }) async {
     try {
-      const apiId = '3b672e333fbd9e3e17a6221ae5d3dc62';
+      const apiId = 'e41258954a88cd161a0e827bfcd3c923';
       final uri = Uri.parse(
         'https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&appid=$apiId',
       );
