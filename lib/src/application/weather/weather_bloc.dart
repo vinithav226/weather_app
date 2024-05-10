@@ -42,12 +42,14 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           userLocation: position,
         ),
       );
-      final city =
-          await decodeLocationInfo(position.latitude, position.longitude);
+      final city = await decodeLocationInfo(
+        state.userLocation?.latitude ?? 0,
+        state.userLocation?.longitude ?? 0,
+      );
       add(
         GetWeatherDataEvent(
-          lat: position.latitude.toString(),
-          lng: position.latitude.toString(),
+          lat: state.userLocation?.latitude.toString() ?? '0',
+          lng: state.userLocation?.longitude.toString() ?? '0',
         ),
       );
       emit(
@@ -79,13 +81,13 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           locationAccessStatus: StatusLoading(),
         ),
       );
-      final weatherData = await _authRepository.getWeatherData(
+      final currentWeatherData = await _authRepository.getWeatherData(
         latitude: event.lat,
         longitude: event.lng,
       );
       emit(
         state.copyWith(
-          weatherData: weatherData,
+          weatherData: currentWeatherData,
           locationAccessStatus: StatusSuccess(),
         ),
       );

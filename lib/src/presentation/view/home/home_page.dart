@@ -44,13 +44,28 @@ class _HomePageState extends State<HomePage> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    state.cityName ?? '',
-                    style: AppTypography.subtitleTextStyle,
+                  GestureDetector(
+                    onTap: () {},
+                    child: Row(
+                      children: [
+                        Text(
+                          state.cityName ?? '',
+                          style: AppTypography.subtitleTextStyle,
+                        ),
+                        const SizedBox(
+                          width: 4,
+                        ),
+                        const Icon(
+                          Icons.call_made,
+                          color: AppColors.textWhiteColor,
+                        ),
+                      ],
+                    ),
                   ),
                   Text(
                     salutation,
-                    style: AppTypography.titleTextStyle,
+                    style: AppTypography.titleTextStyle
+                        .copyWith(color: AppColors.whiteColor),
                   ),
                 ],
               );
@@ -120,33 +135,33 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           height: 60,
                         ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute<void>(
-                                builder: (BuildContext context) =>
-                                    const ForeCastView(),
-                              ),
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Next Days',
-                                style: AppTypography.subtitleTextStyle
-                                    .copyWith(color: AppColors.whiteColor),
-                              ),
-                              const SizedBox(
-                                width: 8,
-                              ),
-                              const Icon(
-                                Icons.arrow_circle_right,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
-                        ),
+                        // TextButton(
+                        //   onPressed: () {
+                        //     Navigator.of(context).push(
+                        //       MaterialPageRoute<void>(
+                        //         builder: (BuildContext context) =>
+                        //             const ForeCastView(),
+                        //       ),
+                        //     );
+                        //   },
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.center,
+                        //     children: [
+                        //       Text(
+                        //         'Next Days',
+                        //         style: AppTypography.subtitleTextStyle
+                        //             .copyWith(color: AppColors.whiteColor),
+                        //       ),
+                        //       const SizedBox(
+                        //         width: 8,
+                        //       ),
+                        //       const Icon(
+                        //         Icons.arrow_circle_right,
+                        //         color: Colors.white,
+                        //       ),
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                   );
@@ -166,6 +181,35 @@ class _HomePageState extends State<HomePage> {
                 }
                 return const SizedBox.shrink();
               },
+            ),
+          ),
+        ),
+        bottomNavigationBar: DecoratedBox(
+          decoration: const BoxDecoration(color: AppColors.secondaryColor),
+          child: TextButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute<void>(
+                  builder: (BuildContext context) => const ForeCastView(),
+                ),
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Next Days',
+                  style: AppTypography.subtitleTextStyle
+                      .copyWith(color: AppColors.whiteColor),
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+                const Icon(
+                  Icons.arrow_circle_right,
+                  color: Colors.white,
+                ),
+              ],
             ),
           ),
         ),
